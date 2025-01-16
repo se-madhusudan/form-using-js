@@ -1,0 +1,6 @@
+-create a form that allows the user to submit their name, email, phone number
+-create a table below the form that displays the name, email, phone number, edit, delete button
+-on form submission, form data should be saved in the table new row, retaining the data saved in last row
+-on clicking the edit button in the table row, that row data should be editable, and saved
+-on clicking the delete button, that row data should be removed
+-javascript uses only, no database
