@@ -98,7 +98,7 @@
         <label for="contact">Contact:</label>
         <input type="tel" id="contact" name="contact" required /><br /><br />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" id="submit" />
       </form>
       <table>
         <thead>
@@ -113,23 +113,32 @@
         </thead>
         <tbody>
           <tr>
-            <td>MK</td>
-            <td>mk@gmail.com</td>
-            <td>1234567890</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
-            <td><button disabled>Save</button></td>
-          </tr>
-          <tr>
-            <td>KM</td>
-            <td>kumarM@gmail.com</td>
-            <td>0987654321</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
-            <td><button disabled>Save</button></td>
+            <td class="name-td">MK</td>
+            <td class="email-td">mk@gmail.com</td>
+            <td class="phone-td">1234567890</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+            <td><button class="save-btn" disabled>Save</button></td>
           </tr>
         </tbody>
       </table>
     </div>
+    <script>
+        const form = document.querySelector('form');
+        const userName = document.querySelector('#name').value;
+        const userEmail = document.querySelector('#email').value;
+        const userPhone = document.querySelector('#phone').value;
+        
+
+        //event listner to work on the form submition
+        form.addEventListener('', );
+
+
+
+        //function to create new table row with the form data
+        const addData = (name, email, phone) => {
+
+        }
+    </script>
   </body>
 </html>
