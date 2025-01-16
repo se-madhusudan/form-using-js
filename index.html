@@ -1,57 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
     <style>
-        table {
-            border: 1px solid black;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .container {
+        width: 80vw;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+      }
+      form {
+        width: 100%;
+        border: 1px solid #007bff;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #e9f7ff;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        overflow-x: scroll;
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #ddd;
+      }
     </style>
-</head>
-<body>
-    <form action="">
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" required /><br /><br />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email" required /><br /><br />
 
         <label for="contact">Contact:</label>
-        <input type="tel" id="contact" name="contact" required><br><br>
+        <input type="tel" id="contact" name="contact" required /><br /><br />
 
-        <input type="submit" value="Submit">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                    <th>Save</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>MK</td>
-                    <td>mk@gmail.com</td>
-                    <td>1234567890</td>
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
-                    <td><button>Save</button></td>
-                </tr>
-                <tr>
-                    <td>KM</td>
-                    <td>kumarM@gmail.com</td>
-                    <td>0987654321</td>
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
-                    <td><button>Save</button></td>
-                </tr>
-            </tbody>
-        </table>
-</body>
+        <input type="submit" value="Submit" />
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Save</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MK</td>
+            <td>mk@gmail.com</td>
+            <td>1234567890</td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+            <td><button disabled>Save</button></td>
+          </tr>
+          <tr>
+            <td>KM</td>
+            <td>kumarM@gmail.com</td>
+            <td>0987654321</td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+            <td><button disabled>Save</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
