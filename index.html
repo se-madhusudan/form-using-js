@@ -162,7 +162,38 @@
         row.appendChild(saveTd);
         
         tbody.appendChild(row);
+
+        //edit or delete row
+        modifyRow(row);
       };
+
+      //fn to modify the row (edit or delete)
+      const modifyRow = (row) => {
+        const nameTd = row.querySelector("td:nth-child(1)");
+        const emailTd = row.querySelector("td:nth-child(2)");
+        const phoneTd = row.querySelector("td:nth-child(3)");
+        const editBtn = row.querySelector('.edit-btn');
+        const saveBtn = row.querySelector('.save-btn');
+        const deleteBtn = row.querySelector('.delete-btn');
+
+        editBtn.addEventListener('click', () => {
+            nameTd.contentEditable = "true";
+            emailTd.contentEditable = "true";
+            phoneTd.contentEditable = "true";
+            saveBtn.disabled = false;
+        });
+
+        saveBtn.addEventListener('click', () => {
+            nameTd.contentEditable = "false";
+            emailTd.contentEditable = "false";
+            phoneTd.contentEditable = "false";
+            saveBtn.disabled = true;
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            row.remove();
+        })
+      }
     </script>
   </body>
 </html>
