@@ -2,3 +2,4 @@
 -creating html element and appending to dom
 -making the table field editable using (nameTd.contentEditable = "true";)
 -changing the attribute value (saveBtn.disabled = false;)
+-styling on basis of boolean attribute value (.save-btn:not(:disabled):hover);

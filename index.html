@@ -77,12 +77,32 @@
       }
       button {
         padding: 6px 12px;
-        border: none;
+        border: 1px solid rgb(74, 123, 163);
         border-radius: 4px;
         cursor: pointer;
+        color: #202020;
+        transition: background-color 0.3s;
       }
-      button:hover {
-        background-color: #ddd;
+      .save-btn:disabled, .edit-btn:disabled {
+        background-color: rgb(95, 95, 95);
+        color: rgb(187, 187, 187);
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .save-btn:not(:disabled):hover {   /* apply the style when button is not disable .ie. enabled*/
+        background-color: #047024;
+        color: #fff;
+        border: 1px dotted #047024;
+      }
+      .edit-btn:not(:disabled):hover {
+        background-color: #a7942e;
+        color: #fff;
+        border: 1px dotted #a7942e;
+      }
+      .delete-btn:hover {
+        background-color: rgb(206, 21, 21);
+        color: #fff;
+        border: 1px dotted rgb(206, 21, 21);
       }
     </style>
   </head>
@@ -181,6 +201,7 @@
             emailTd.contentEditable = "true";
             phoneTd.contentEditable = "true";
             saveBtn.disabled = false;
+            editBtn.disabled = true;
         });
 
         saveBtn.addEventListener('click', () => {
@@ -188,6 +209,7 @@
             emailTd.contentEditable = "false";
             phoneTd.contentEditable = "false";
             saveBtn.disabled = true;
+            editBtn.disabled = false;
         });
 
         deleteBtn.addEventListener('click', () => {
