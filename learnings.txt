@@ -1,0 +1,4 @@
+-using the form data (submited)
+-creating html element and appending to dom
+-making the table field editable using (nameTd.contentEditable = "true";)
+-changing the attribute value (saveBtn.disabled = false;)
