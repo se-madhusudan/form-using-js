@@ -112,19 +112,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="name-td">MK</td>
-            <td class="email-td">mk@gmail.com</td>
-            <td class="phone-td">1234567890</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-            <td><button class="save-btn" disabled>Save</button></td>
-          </tr>
         </tbody>
       </table>
     </div>
     <script>
       const form = document.querySelector("form");
+      const tbody = document.querySelector("table tbody");
 
       //event listner to work on the form submition
       form.addEventListener("submit", (e) => {
@@ -136,10 +129,40 @@
         console.log("Name: ", userName);
         console.log("Email: ", userEmail);
         console.log("Phone: ", userPhone);
+
+        //data adding to the table
+        addData(userName, userEmail, userPhone);
+
+        //clear the form fields
+        form.reset();
       });
 
       //function to create new table row with the form data
-      const addData = (name, email, phone) => {};
+      const addData = (name, email, phone) => {
+        const row = document.createElement("tr");
+        const nameTd = document.createElement("td");
+        const emailTd = document.createElement("td");
+        const phoneTd = document.createElement("td");
+        const editTd = document.createElement("td");
+        const deleteTd = document.createElement("td");
+        const saveTd = document.createElement("td");
+
+        nameTd.textContent = name;
+        emailTd.textContent = email;
+        phoneTd.textContent = phone;
+        editTd.innerHTML = '<button class="edit-btn">Edit</button>';
+        deleteTd.innerHTML = '<button class="delete-btn">Delete</button>';
+        saveTd.innerHTML = '<button class="save-btn" disabled>Save</button>';
+
+        row.appendChild(nameTd);
+        row.appendChild(emailTd);
+        row.appendChild(phoneTd);
+        row.appendChild(editTd);
+        row.appendChild(deleteTd);
+        row.appendChild(saveTd);
+        
+        tbody.appendChild(row);
+      };
     </script>
   </body>
 </html>
