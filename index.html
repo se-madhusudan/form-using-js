@@ -28,6 +28,7 @@
         padding: 20px;
         border-radius: 8px;
         background-color: #e9f7ff;
+        margin-bottom: 20px;
       }
       label {
         display: block;
@@ -56,10 +57,21 @@
       input[type="submit"]:hover {
         background-color: #0056b3;
       }
-      .table-wrapper{
+      .drag-container {
+        display: none;
+        justify-content: flex-end;
+      }
+      .drag {
+        width: 40px;
+        height: 40px;
+      }
+      .drag img {
+        width: 100%;
+        object-fit: cover;
+      }
+      .table-wrapper {
         width: 100%;
         overflow-x: auto;
-        margin-top: 20px;
       }
       table {
         width: 100%;
@@ -86,13 +98,15 @@
         color: #202020;
         transition: background-color 0.3s;
       }
-      .save-btn:disabled, .edit-btn:disabled {
+      .save-btn:disabled,
+      .edit-btn:disabled {
         background-color: rgb(95, 95, 95);
         color: rgb(187, 187, 187);
         cursor: not-allowed;
         opacity: 0.6;
       }
-      .save-btn:not(:disabled):hover {   /* apply the style when button is not disable .ie. enabled*/
+      .save-btn:not(:disabled):hover {
+        /* apply the style when button is not disable .ie. enabled*/
         background-color: #047024;
         color: #fff;
         border: 1px dotted #047024;
@@ -123,21 +137,25 @@
 
         <input type="submit" value="Submit" id="submit" />
       </form>
+      <div class="drag-container">
+        <div class="drag">
+          <img src="./drag-left.gif" alt="drag to left" />
+        </div>
+      </div>
       <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>Save</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Edit</th>
+              <th>Delete</th>
+              <th>Save</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
     <script>
@@ -185,7 +203,7 @@
         row.appendChild(editTd);
         row.appendChild(deleteTd);
         row.appendChild(saveTd);
-        
+
         tbody.appendChild(row);
 
         //edit or delete row
@@ -197,30 +215,48 @@
         const nameTd = row.querySelector("td:nth-child(1)");
         const emailTd = row.querySelector("td:nth-child(2)");
         const phoneTd = row.querySelector("td:nth-child(3)");
-        const editBtn = row.querySelector('.edit-btn');
-        const saveBtn = row.querySelector('.save-btn');
-        const deleteBtn = row.querySelector('.delete-btn');
+        const editBtn = row.querySelector(".edit-btn");
+        const saveBtn = row.querySelector(".save-btn");
+        const deleteBtn = row.querySelector(".delete-btn");
 
-        editBtn.addEventListener('click', () => {
-            nameTd.contentEditable = "true";
-            emailTd.contentEditable = "true";
-            phoneTd.contentEditable = "true";
-            saveBtn.disabled = false;
-            editBtn.disabled = true;
+        editBtn.addEventListener("click", () => {
+          nameTd.contentEditable = "true";
+          emailTd.contentEditable = "true";
+          phoneTd.contentEditable = "true";
+          saveBtn.disabled = false;
+          editBtn.disabled = true;
         });
 
-        saveBtn.addEventListener('click', () => {
-            nameTd.contentEditable = "false";
-            emailTd.contentEditable = "false";
-            phoneTd.contentEditable = "false";
-            saveBtn.disabled = true;
-            editBtn.disabled = false;
+        saveBtn.addEventListener("click", () => {
+          nameTd.contentEditable = "false";
+          emailTd.contentEditable = "false";
+          phoneTd.contentEditable = "false";
+          saveBtn.disabled = true;
+          editBtn.disabled = false;
         });
 
-        deleteBtn.addEventListener('click', () => {
-            row.remove();
-        })
-      }
+        deleteBtn.addEventListener("click", () => {
+          row.remove();
+        });
+      };
+
+      //to show or hide the drag image based on overflow of table
+      document.addEventListener("DOMContentLoaded", () => {
+        const tableContainer = document.querySelector(".table-wrapper");
+        const dragContainer = document.querySelector(".drag-container");
+
+        const isOverflow = () => {
+          if (tableContainer.scrollWidth > tableContainer.clientWidth) {
+            dragContainer.style.display = "flex";
+          } else {
+            dragContainer.style.display = "none";
+          }
+        };
+
+        isOverflow(); // Initial check
+
+        window.addEventListener("resize", isOverflow);
+      });
     </script>
   </body>
 </html>
